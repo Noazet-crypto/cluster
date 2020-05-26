@@ -14,4 +14,4 @@ up:
 	cd .. && vagrant up
 
 commit:
-	cd .. & git add . && git commit -m '$c' && git push origin master
+	cd .. & git add ./ && git commit -m '$c' && git push origin master
