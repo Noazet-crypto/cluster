@@ -1,0 +1,1 @@
+web: vagrant up
