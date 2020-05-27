@@ -1,20 +1,25 @@
 #!/bin/bash
 set -eo pipefail
 shopt -s nullglob
+
 mysql_log() {
 	local type="$1"; shift
 	printf '%s [%s] [Entrypoint]: %s\n' "$(date --rfc-3339=seconds)" "$type" "$*"
 }
+
 mysql_note() {
 	mysql_log Note "$@"
 }
+
 mysql_warn() {
 	mysql_log Warn "$@" >&2
 }
+
 mysql_error() {
 	mysql_log ERROR "$@" >&2
 	exit 1
 }
+
 file_env() {
 	local var="$1"
 	local fileVar="${var}_FILE"
@@ -31,11 +36,13 @@ file_env() {
 	export "$var"="$val"
 	unset "$fileVar"
 }
+
 _is_sourced() {
 	[ "${#FUNCNAME[@]}" -ge 2 ] \
 		&& [ "${FUNCNAME[0]}" = '_is_sourced' ] \
 		&& [ "${FUNCNAME[1]}" = 'source' ]
 }
+
 docker_process_init_files() {
 	mysql=( docker_process_sql )
 	echo
@@ -59,6 +66,7 @@ docker_process_init_files() {
 		echo
 	done
 }
+
 mysql_check_config() {
 	local toRun=( "$@" --verbose --help ) errors
 	if ! errors="$("${toRun[@]}" 2>&1 >/dev/null)"; then
@@ -70,6 +78,7 @@ mysql_get_config() {
 	"$@" --verbose --help --log-bin-index="$(mktemp -u)" 2>/dev/null \
 		| awk -v conf="$conf" '$1 == conf && /^[^ \t]/ { sub(/^[^ \t]+[ \t]+/, ""); print; exit }'
 }
+
 docker_temp_server_start() {
 	if [ "${MYSQL_MAJOR}" = '5.6' ] || [ "${MYSQL_MAJOR}" = '5.7' ]; then
 		"$@" --skip-networking --socket="${SOCKET}" &
@@ -94,16 +103,19 @@ docker_temp_server_start() {
 		fi
 	fi
 }
+
 docker_temp_server_stop() {
 	if ! mysqladmin --defaults-extra-file=<( _mysql_passfile ) shutdown -uroot --socket="${SOCKET}"; then
 		mysql_error "Unable to shut down server."
 	fi
 }
+
 docker_verify_minimum_env() {
 	if [ -z "$MYSQL_ROOT_PASSWORD" -a -z "$MYSQL_ALLOW_EMPTY_PASSWORD" -a -z "$MYSQL_RANDOM_ROOT_PASSWORD" ]; then
 		mysql_error $'Database is uninitialized and password option is not specified\n\tYou need to specify one of MYSQL_ROOT_PASSWORD, MYSQL_ALLOW_EMPTY_PASSWORD and MYSQL_RANDOM_ROOT_PASSWORD'
 	fi
 }
+
 docker_create_db_directories() {
 	local user; user="$(id -u)"
 	mkdir -p "$DATADIR"
@@ -111,6 +123,7 @@ docker_create_db_directories() {
 		find "$DATADIR" \! -user mysql -exec chown mysql '{}' +
 	fi
 }
+
 docker_init_database_dir() {
 	mysql_note "Initializing database files"
 	if [ "$MYSQL_MAJOR" = '5.6' ]; then
@@ -125,6 +138,7 @@ docker_init_database_dir() {
 		mysql_note "Certificates initialized"
 	fi
 }
+
 docker_setup_env() {
 	declare -g DATADIR SOCKET
 	DATADIR="$(mysql_get_config 'datadir' "$@")"
@@ -139,6 +153,7 @@ docker_setup_env() {
 		DATABASE_ALREADY_EXISTS='true'
 	fi
 }
+
 docker_process_sql() {
 	passfileArgs=()
 	if [ '--dont-use-mysql-root-password' = "$1" ]; then
@@ -150,6 +165,7 @@ docker_process_sql() {
 	fi
 	mysql --defaults-extra-file=<( _mysql_passfile "${passfileArgs[@]}") --protocol=socket -uroot -hlocalhost --socket="${SOCKET}" "$@"
 }
+
 docker_setup_db() {
 	if [ -z "$MYSQL_INITDB_SKIP_TZINFO" ]; then
 		mysql_tzinfo_to_sql /usr/share/zoneinfo \
@@ -208,6 +224,7 @@ docker_setup_db() {
 		docker_process_sql --database=mysql <<<"FLUSH PRIVILEGES ;"
 	fi
 }
+
 _mysql_passfile() {
 	if [ '--dont-use-mysql-root-password' != "$1" ] && [ -n "$MYSQL_ROOT_PASSWORD" ]; then
 		cat <<-EOF
@@ -216,6 +233,7 @@ _mysql_passfile() {
 		EOF
 	fi
 }
+
 mysql_expire_root_user() {
 	if [ -n "$MYSQL_ONETIME_PASSWORD" ]; then
 		docker_process_sql --database=mysql <<-EOSQL
@@ -223,6 +241,7 @@ mysql_expire_root_user() {
 		EOSQL
 	fi
 }
+
 _mysql_want_help() {
 	local arg
 	for arg; do
@@ -234,6 +253,7 @@ _mysql_want_help() {
 	done
 	return 1
 }
+
 _main() {
 	if [ "${1:0:1}" = '-' ]; then
 		set -- mysqld "$@"
@@ -267,6 +287,7 @@ _main() {
 	fi
 	exec "$@"
 }
+
 if ! _is_sourced; then
 	_main "$@"
 fi
