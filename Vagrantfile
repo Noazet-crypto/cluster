@@ -22,9 +22,9 @@ Vagrant.configure(2) do |config|
   config.vm.define "node-server" do |node|
     node.vm.hostname = "node-server"
     node.vm.network "private_network", ip: "172.20.0.10"
-    node.vm.synced_folder "./server/scripts", "/cluster/scripts"
-    node.vm.synced_folder "./server/config", "/cluster/config"
-    node.vm.synced_folder "./server/services", "/cluster/services"
+    node.vm.synced_folder "./nomad-server/scripts", "/cluster/scripts"
+    node.vm.synced_folder "./nomad-server/config", "/cluster/config"
+    node.vm.synced_folder "./nomad-server/services", "/cluster/services"
     node.vm.provision "shell" do |s|
       s.inline = "bash /cluster/scripts/install.sh"
     end
@@ -35,9 +35,9 @@ Vagrant.configure(2) do |config|
   config.vm.define "node-client" do |node|
     node.vm.hostname = "node-client"
     node.vm.network "private_network", ip: "172.20.1.10"
-    node.vm.synced_folder "./client/scripts", "/cluster/scripts"
-    node.vm.synced_folder "./client/config", "/cluster/config"
-    node.vm.synced_folder "./client/services", "/cluster/services"
+    node.vm.synced_folder "./nomad-client/scripts", "/cluster/scripts"
+    node.vm.synced_folder "./nomad-client/config", "/cluster/config"
+    node.vm.synced_folder "./nomad-client/services", "/cluster/services"
     node.vm.provision "shell" do |s|
       s.inline = "bash /cluster/scripts/install.sh"
     end

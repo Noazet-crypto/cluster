@@ -25,6 +25,7 @@ job "Database" {
       }
       env {
         "MYSQL_ROOT_PASSWORD" = "root"
+        "MYSQL_DATABASE" = "prod"
       }
       resources {
         network {

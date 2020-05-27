@@ -62,4 +62,5 @@ RUN ["chmod", "+x", "/usr/local/bin/docker-entrypoint.sh"] \
 	ln -s usr/local/bin/docker-entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["docker-entrypoint.sh"]
 EXPOSE 3306 33060
+COPY init.sql docker-entrypoint-initdb.d
 CMD ["mysqld"]
