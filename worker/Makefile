@@ -7,6 +7,9 @@ job:
 clean:
 	curl -X PUT http://172.20.0.10:4646/v1/system/gc
 
+reset:
+
+
 kill:
 	cd .. && vagrant halt --force
 
