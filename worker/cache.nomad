@@ -17,9 +17,9 @@ job "Cache" {
           "--requirepass",
           "root"
         ]
-        volumes = [
-          "./store:/data"
-        ]
+        // volumes = [
+        //   "./store:/data"
+        // ]
       }
       resources {
         network {

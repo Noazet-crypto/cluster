@@ -13,9 +13,9 @@ job "Broker" {
         // args = [
         //   "kafka=3"
         // ]
-        volumes = [
-          "/var/run/docker.sock:/var/run/docker.sock"
-        ]
+        // volumes = [
+        //   "/var/run/docker.sock:/var/run/docker.sock"
+        // ]
       }
       env {
         "KAFKA_ADVERTISED_HOST_NAME" = "172.20.1.10"
