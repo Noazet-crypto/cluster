@@ -3,11 +3,17 @@ job "Database" {
   type = "service"
   group "MySQL" {
     restart {
-      attempts = 2
-      interval = "30m"
+      attempts = 10
+      interval = "5m"
       delay = "15s"
       mode = "fail"
     }
+    ephemeral_disk {
+      migrate = true
+      size    = 1000
+      sticky  = true
+    }
+    # AWS Elastic Block Storage to sync DB
     task "mysql" {
       driver = "docker"
       config {
@@ -20,7 +26,7 @@ job "Database" {
           "--server-id=1"
         ]
         volumes = [
-          "./store:/var/lib/mysql"
+          "/docker-entrypoint-initdb.d/:/var/lib/mysql",
         ]
       }
       env {

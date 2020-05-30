@@ -2,6 +2,12 @@ job "Broker" {
   datacenters = ["dc1"]
   type = "service"
   group "Kafka" {
+    restart {
+      attempts = 10
+      interval = "5m"
+      delay = "15s"
+      mode = "fail"
+    }
     task "kafka" {
       driver = "docker"
       config {

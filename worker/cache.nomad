@@ -2,6 +2,12 @@ job "Cache" {
   datacenters = ["dc1"]
   type = "service"
   group "Redis" {
+    restart {
+      attempts = 10
+      interval = "5m"
+      delay = "15s"
+      mode = "fail"
+    }
     task "redis" {
       driver = "docker"
       config {

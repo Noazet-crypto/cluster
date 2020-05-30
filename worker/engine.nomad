@@ -2,6 +2,12 @@ job "Engine" {
   datacenters = ["dc1"]
   type = "service"
   group "App" {
+    restart {
+      attempts = 10
+      interval = "5m"
+      delay = "15s"
+      mode = "fail"
+    }
     task "servers" {
       driver = "docker"
       config {
