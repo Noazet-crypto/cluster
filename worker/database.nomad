@@ -13,7 +13,7 @@ job "Database" {
       size    = 1000
       sticky  = true
     }
-    # AWS Elastic Block Storage to sync DB
+    # Volume: AWS Elastic Block Storage to sync DB
     task "mysql" {
       driver = "docker"
       config {
