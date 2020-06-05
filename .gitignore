@@ -67,3 +67,9 @@ override.tf.json
 !.vscode/launch.json
 !.vscode/extensions.json
 .history
+
+############################################
+## Go
+############################################
+
+binance-wrapper/tmp

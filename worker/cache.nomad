@@ -11,7 +11,7 @@ job "Cache" {
     task "redis" {
       driver = "docker"
       config {
-        image = "louisl98/redis-exchange"
+        image = "redis:6.0.4-alpine"
         sysctl {
           net.core.somaxconn = "511"
         }

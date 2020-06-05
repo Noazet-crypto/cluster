@@ -11,7 +11,7 @@ job "Broker" {
     task "kafka" {
       driver = "docker"
       config {
-        image = "louisl98/kafka-exchange"
+        image = "wurstmeister/kafka"
         port_map {
           kafka = 9092
         }

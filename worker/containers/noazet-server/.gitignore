@@ -1,0 +1,63 @@
+############################################
+## Linux
+############################################
+
+*~
+.directory
+.fuse_hidden*
+.Trash-*
+.nfs*
+
+############################################
+## macOS
+############################################
+
+._*
+*.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+############################################
+## Docker
+############################################
+
+store
+
+############################################
+## Go
+############################################
+
+tmp
+vendor/
+algo
+/lastupdate.tmp
+/routers/commentsRouter_controllers.go
+/swagger/
+data/
+data/*
+.idea
+.idea/*
+
+############################################
+## VSCode
+############################################
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history

@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  platform:
+    container_name: app
+    build: .
+    ports:
+      - "5000:3000"
+    volumes: 
+      - ../noazet-client/:/app/
