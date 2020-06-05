@@ -19,7 +19,6 @@ services:
       MYSQL_DATABASE: local
     volumes:
       - ./tables/:/docker-entrypoint-initdb.d
-      - ./store/mysql/:/var/lib/mysql/
   kafka:
     container_name: kafka
     image: wurstmeister/kafka

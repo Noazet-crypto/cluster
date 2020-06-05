@@ -73,3 +73,8 @@ override.tf.json
 ############################################
 
 binance-wrapper/tmp
+
+
+
+
+worker/store
