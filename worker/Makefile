@@ -1,6 +1,9 @@
 infra:
 	terraform apply
 
+db:
+	docker-compose up -d
+
 job:
 	nomad run -address http://172.20.0.10:4646/ $f
 

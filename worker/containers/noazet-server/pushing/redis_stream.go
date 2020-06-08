@@ -5,9 +5,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/Noazet-crypto/trading-engine/conf"
-	"github.com/Noazet-crypto/trading-engine/models"
-	"github.com/Noazet-crypto/trading-engine/utils"
+	"github.com/Noazet-crypto/cluster/worker/containers/noazet-server/conf"
+	"github.com/Noazet-crypto/cluster/worker/containers/noazet-server/models"
+	"github.com/Noazet-crypto/cluster/worker/containers/noazet-server/utils"
 	"github.com/go-redis/redis"
 	"github.com/siddontang/go-log/log"
 )

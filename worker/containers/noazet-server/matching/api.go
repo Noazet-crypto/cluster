@@ -1,7 +1,7 @@
 package matching
 
 import (
-	"github.com/Noazet-crypto/trading-engine/models"
+	"github.com/Noazet-crypto/cluster/worker/containers/noazet-server/models"
 )
 
 // 用于撮合引擎读取order，需要支持设置offset，从指定的offset开始读取

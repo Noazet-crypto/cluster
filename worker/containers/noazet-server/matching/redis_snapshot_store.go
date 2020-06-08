@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/Noazet-crypto/trading-engine/conf"
+	"github.com/Noazet-crypto/cluster/worker/containers/noazet-server/conf"
 	"github.com/go-redis/redis"
 )
 

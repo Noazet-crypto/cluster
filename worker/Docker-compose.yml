@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   mysql:
-    container_name: mysql
+    container_name: noazet-local-db
     image: mysql:5.7
     ports:
       - "3306:3306"
@@ -10,5 +10,14 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: local
     volumes:
-      - ./containers/noazet-server/tables/:/docker-entrypoint-initdb.d
+      - ./containers/noazet-server/tables/:/docker-entrypoint-initdb.d/
       - ./store/:/var/lib/mysql/
+    networks:
+      mysql:
+        ipv4_address: 10.5.0.5
+networks:
+  mysql:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 10.5.0.0/16

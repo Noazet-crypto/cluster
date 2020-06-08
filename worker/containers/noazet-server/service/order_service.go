@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/Noazet-crypto/trading-engine/models"
-	"github.com/Noazet-crypto/trading-engine/models/mysql"
+	"github.com/Noazet-crypto/cluster/worker/containers/noazet-server/models"
+	"github.com/Noazet-crypto/cluster/worker/containers/noazet-server/models/mysql"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/shopspring/decimal"
 )

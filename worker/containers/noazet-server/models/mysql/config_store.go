@@ -1,6 +1,6 @@
 package mysql
 
-import "github.com/Noazet-crypto/trading-engine/models"
+import "github.com/Noazet-crypto/cluster/worker/containers/noazet-server/models"
 
 func (s *Store) GetConfigs() ([]*models.Config, error) {
 	var configs []*models.Config

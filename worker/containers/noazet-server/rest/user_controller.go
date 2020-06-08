@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/Noazet-crypto/trading-engine/service"
+	"github.com/Noazet-crypto/cluster/worker/containers/noazet-server/service"
 	"github.com/gin-gonic/gin"
 )
 

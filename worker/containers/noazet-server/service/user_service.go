@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/Noazet-crypto/trading-engine/conf"
-	"github.com/Noazet-crypto/trading-engine/models"
-	"github.com/Noazet-crypto/trading-engine/models/mysql"
+	"github.com/Noazet-crypto/cluster/worker/containers/noazet-server/conf"
+	"github.com/Noazet-crypto/cluster/worker/containers/noazet-server/models"
+	"github.com/Noazet-crypto/cluster/worker/containers/noazet-server/models/mysql"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/pkg/errors"
 )

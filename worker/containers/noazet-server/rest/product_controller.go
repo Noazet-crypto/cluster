@@ -3,8 +3,8 @@ package rest
 import (
 	"net/http"
 
-	"github.com/Noazet-crypto/trading-engine/service"
-	"github.com/Noazet-crypto/trading-engine/utils"
+	"github.com/Noazet-crypto/cluster/worker/containers/noazet-server/service"
+	"github.com/Noazet-crypto/cluster/worker/containers/noazet-server/utils"
 	"github.com/gin-gonic/gin"
 )
 

@@ -5,7 +5,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Noazet-crypto/trading-engine/models"
+	"github.com/Noazet-crypto/cluster/worker/containers/noazet-server/models"
 	"github.com/jinzhu/gorm"
 )
 

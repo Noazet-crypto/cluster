@@ -1,5 +1,5 @@
 dev:
-	mkdir -p store/mysql
+	mkdir -p store
 	docker-compose up -d
 	air .
 
@@ -11,7 +11,7 @@ recompose:
 	docker-compose down
 	rm -r store
 	docker-compose build --no-cache
-	mkdir -p store/{kafka,mysql,redis}
+	mkdir store
 	docker-compose up -d --force-recreate
 
 build:

@@ -3,9 +3,9 @@ package worker
 import (
 	"time"
 
-	"github.com/Noazet-crypto/trading-engine/matching"
-	"github.com/Noazet-crypto/trading-engine/models"
-	"github.com/Noazet-crypto/trading-engine/service"
+	"github.com/Noazet-crypto/cluster/worker/containers/noazet-server/matching"
+	"github.com/Noazet-crypto/cluster/worker/containers/noazet-server/models"
+	"github.com/Noazet-crypto/cluster/worker/containers/noazet-server/service"
 	"github.com/shopspring/decimal"
 	"github.com/siddontang/go-log/log"
 )

@@ -4,8 +4,8 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/Noazet-crypto/trading-engine/models"
-	"github.com/Noazet-crypto/trading-engine/models/mysql"
+	"github.com/Noazet-crypto/cluster/worker/containers/noazet-server/models"
+	"github.com/Noazet-crypto/cluster/worker/containers/noazet-server/models/mysql"
 	"github.com/shopspring/decimal"
 )
 
