@@ -22,3 +22,4 @@ publish:
 
 test-prod:
 	docker run -it louisl98/go-trading-engine
+
